@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>คำสั่ง SSH</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* แบ่งหน้าเว็บเป็น 2 คอลัมน์ */
+            grid-gap: 20px; /* ระยะห่างระหว่างคอลัมน์ */
+            align-items: start; /* จัดการตำแหน่งในแนวตั้ง (ขอบบน) */
+        }
+
+        h1 {
+            color: #333;
+            grid-column: span 2; /* ขยายให้ครอบทั้งคอลัมน์ */
+        }
+
+        form {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        h1, form {
+            grid-column: span 2; /* ขยายให้ครอบทั้งคอลัมน์ */
+        }
+
+        h1 + form {
+            margin-top: 20px; /* ระยะห่างระหว่างคำสั่ง SSH และส่วนคำสั่ง Router */
+        }
+    </style>
+</head>
+<body>
+    <h1>คำสั่ง SSH</h1>
+
+    <form method="POST">
+        คำสั่ง SSH: <br>
+        <textarea name="command" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="ส่งคำสั่ง SSH">
+    </form>
+    
+    <form method="POST">
+        <input type="hidden" name="command" value="sh ip int bri">
+        <input type="submit" value="show ip interface brief">
+    </form>
+
+    <form method="POST">
+        <input type="hidden" name="command" value="sh version">
+        <input type="submit" value="show version">
+    </form>
+
+    <h1>Router</h1>
+
+    <form method="POST">
+        Interface: <input type="text" name="interface"><br>
+        IP Address: <input type="text" name="ip_address"><br>
+        Subnet Mask: <input type="text" name="subnet_mask"><br>
+        <input type="submit" value="กำหนด IP ให้กับ Interface">
+    </form>
+
+    <h1>Switch</h1>
+
+    <form method="POST">
+        Vlan: <input type="text" name="num_vlan"><br>
+        name: <input type="text" name="name_vlan"><br>
+        <input type="submit" value="สร้าง Vlan">
+    </form>
+
+    <form method="POST">
+        Interface_Vlan: <input type="text" name="interface_vlan"><br>
+        IP Address: <input type="text" name="ip_address_vlan"><br>
+        Subnet Mask: <input type="text" name="subnet_mask_vlan"><br>
+        <input type="submit" value="กำหนด IP ให้กับ Interface_Vlan">
+    </form>
+
+    <form method="POST">
+        vlan: <input type="text" name="vlan"><br>
+        Interface: <input type="text" name="int"><br>
+        สามารถใส่คำสั่ง range เพื่อเลือกหลาย interface<br>
+        <input type="submit" value="กำหนด IP ให้กับ Interface_Vlan">
+    </form>
+</body>
+</html>
